@@ -1,0 +1,12 @@
+# Node
+frontend/node_modules
+frontend/.next
+
+# Java
+backend/target
+backend/.mvn
+backend/*.log
+
+# Env files
+.env
+.env.local
