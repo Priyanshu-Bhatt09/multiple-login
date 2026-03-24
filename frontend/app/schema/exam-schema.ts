@@ -9,6 +9,7 @@ export const optionSchema = z.object({
 export const questionSchema = z.object({
     text: z.string().min(1, "Question required"),
     points: z.number().min(1),
+    negativePoint: z.number().min(0),
     options: z.array(optionSchema).min(2)
 });
 

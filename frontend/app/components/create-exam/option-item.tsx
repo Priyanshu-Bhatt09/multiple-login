@@ -2,7 +2,12 @@
 
 import { useFormContext } from "react-hook-form";
 
-export default function OptionItem({qIndex, oIndex}: any){
+type OptionItemProps = {
+    qIndex: number,
+    oIndex: number
+}
+
+export default function OptionItem({qIndex, oIndex}: OptionItemProps){
     const {register} = useFormContext();
 
     return(

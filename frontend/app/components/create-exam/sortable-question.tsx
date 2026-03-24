@@ -3,8 +3,13 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import QuestionCard from "./question-card";
+type SortableQuestionProps = {
+    id: string,
+    index: number,
+    remove: (index: number) => void;
+}
 
-export default function SortableQuestion({id, index, remove} : any) {
+export default function SortableQuestion({id, index, remove} : SortableQuestionProps) {
     //setNodeRef - connect your DOM element(div, h1, h2 or anything) to the drag system, we attach it like ref = {setNodeRef}
     //transform - contains movement data while dragging
     //transition - controls animation when items reorder
@@ -18,8 +23,10 @@ export default function SortableQuestion({id, index, remove} : any) {
     };
 
     return(
-        <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
-            <QuestionCard index={index} remove={remove} />
+        <div ref={setNodeRef} style={style}>
+            <QuestionCard index={index} remove={remove}
+            dragHandleProps={{...attributes, ...listeners}}
+            />
         </div>
     )
 }

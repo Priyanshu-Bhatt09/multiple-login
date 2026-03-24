@@ -3,40 +3,75 @@
 import { useFieldArray, useFormContext } from "react-hook-form";
 import OptionItem from "./option-item";
 
-export default function QuestionCard({index, remove}: any) {
+type QuestionCardProps = {
+    index: number,
+    remove: (index: number) => void,
+    dragHandleProps: Record<string, unknown>
+}
+
+export default function QuestionCard({ index, remove, dragHandleProps }: QuestionCardProps) {
     const { register, control } = useFormContext();
-    const {fields, append} = useFieldArray({
-        control, 
+    const { fields, append } = useFieldArray({
+        control,
         name: `questions.${index}.options`
     });
 
     const addOption = () => {
-        append({text: "", isCorrect: false});
+        append({ text: "", isCorrect: false });
     };
 
-    return(
-        <div className="border rounded-lg p-4">
-            <span className="cursor-grab">⋮⋮</span>
-            <input 
-            {...register(`questions.${index}.text`)}
-            placeholder="Question Text"
-            />
-            <input 
-            type="number"
-            {...register(`questions.${index}.points`, {valueAsNumber: true})}
-            />
+    return (
+        <div className="border rounded-lg p-4 m-2">
+            <div className="flex flex-row gap-8">
+                <div>
+                    <span
+                        {...dragHandleProps}
+                        className="cursor-grab m-1">⋮⋮</span>
+                    <input
+                        className="border p-1 w-[40vw] h-[8vh] "
+                        {...register(`questions.${index}.text`)}
+                        placeholder="Question Text"
+                    />
+                </div>
+
+                <div className=" flex flex-col w-[10vw]">
+                    <label className="border-2 text-center">Points</label>
+                    <input
+                        className="my-1 border-2 text-center"
+                        type="number"
+                        {...register(`questions.${index}.points`, { valueAsNumber: true }
+                        )}
+                    />
+                </div>
+                <div className=" flex flex-col w-[18vw]">
+                    <label className="border-2 text-center">Negative Points</label>
+                    <input
+                        className="border-2 text-center my-1"
+                        type="number"
+
+                        {...register(`questions.${index}.negativePoint`,
+                            { valueAsNumber: true }
+                        )}
+                    />
+                </div>
+            </div>
+
             {fields.map((field, i) => (
                 <OptionItem
-                key={field.id}
-                qIndex={index}
-                oIndex={i}
+                    key={field.id}
+                    qIndex={index}
+                    oIndex={i}
                 />
             ))}
-            <button type="button" onClick={addOption}>
+            <button
+                className="border-2 m-1 p-1 rounded-md"
+                type="button" onClick={addOption}>
                 Add Option
             </button>
 
-            <button type="button" onClick={() => remove(index)}>Delete Question</button>
+            <button type="button"
+                className="border-2 m-1 p-1 rounded-md"
+                onClick={() => remove(index)}>Delete Question</button>
         </div>
     )
 }
