@@ -4,10 +4,7 @@ import com.example.backend.dto.MessageResponseDTO;
 import com.example.backend.dto.SignInRequestDTO;
 import com.example.backend.dto.SignUpRequestDTO;
 import com.example.backend.service.LoginService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/proctor/login")
@@ -19,11 +16,12 @@ public class LoginController {
         this.service = service;
     }
     @PostMapping("/signup")
-    public MessageResponseDTO signup(SignUpRequestDTO request) {
+    public MessageResponseDTO signup(@RequestBody SignUpRequestDTO request) {
         boolean success = service.signUp(
+                request.getName(),
                 request.getEmail(),
-                request.getPassword(),
-                request.getName()
+                request.getPassword()
+
         );
         if(!success) {
             return new MessageResponseDTO("User already exists");
@@ -31,7 +29,7 @@ public class LoginController {
         return new MessageResponseDTO("SignUp Successful");
     }
     @PostMapping("/signin")
-    public MessageResponseDTO signIn(SignInRequestDTO request) {
+    public MessageResponseDTO signIn(@RequestBody SignInRequestDTO request) {
         boolean success = service.signIn(
                 request.getEmail(),
                 request.getPassword()
