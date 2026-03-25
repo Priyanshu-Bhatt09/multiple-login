@@ -14,6 +14,10 @@ export default function MCQ({ index }: any) {
         name: `questions.${index}.options` //this means Manage formData.questions[index].options so the name is basically a path inside the form object
     });
 
+    const addOption = () => {
+        append({text: "", isCorrect: false});
+    };
+
     return (
         <div>
             {fields.map((field, i) => ( //field is the current questions/options object and i is the position in the array

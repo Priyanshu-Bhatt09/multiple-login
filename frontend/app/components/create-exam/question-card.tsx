@@ -2,6 +2,7 @@
 
 import { useFieldArray, useFormContext } from "react-hook-form";
 import OptionItem from "./option-item";
+import { renderQuestionType } from "./render_type";
 
 type QuestionCardProps = {
     index: number,
@@ -10,15 +11,17 @@ type QuestionCardProps = {
 }
 
 export default function QuestionCard({ index, remove, dragHandleProps }: QuestionCardProps) {
-    const { register, control } = useFormContext();
-    const { fields, append } = useFieldArray({
-        control,
-        name: `questions.${index}.options`
-    });
+    const { register, watch } = useFormContext(); //watch is used when we want the UI to change based on the form values
 
-    const addOption = () => {
-        append({ text: "", isCorrect: false });
-    };
+    const type = watch(`questions.${index}.type`); //this lets us read the current value of the form field and updates when it changes
+    // const { fields, append } = useFieldArray({
+    //     control,
+    //     name: `questions.${index}.options`
+    // });
+
+    // const addOption = () => {
+    //     append({ text: "", isCorrect: false });
+    // };
 
     return (
         <div className="border rounded-lg p-4 m-2">
@@ -68,7 +71,7 @@ export default function QuestionCard({ index, remove, dragHandleProps }: Questio
                 </select>
             </div>
 
-            {fields.map((field, i) => (
+            {/* {fields.map((field, i) => (
                 <OptionItem
                     key={field.id}
                     qIndex={index}
@@ -79,7 +82,10 @@ export default function QuestionCard({ index, remove, dragHandleProps }: Questio
                 className="border-2 m-1 p-1 rounded-md"
                 type="button" onClick={addOption}>
                 Add Option
-            </button>
+            </button> */}
+
+            {/* render question type component */}
+            {renderQuestionType(type, index)}
 
             <button type="button"
                 className="border-2 m-1 p-1 rounded-md"
