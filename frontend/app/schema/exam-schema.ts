@@ -11,6 +11,7 @@ export const questionSchema = z.object({
     points: z.number().min(1),
     negativePoint: z.number().min(0),
     options: z.array(optionSchema).min(2),
+    paragraph: z.string().optional(),
     type: z.enum([
         "MCQ",
         "MCA",

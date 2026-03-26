@@ -43,6 +43,8 @@ export default function ExamForm() {
             text: "",
             points: 1,
             negativePoint: 0,
+            paragraph: "",
+            type: "MCQ",
             options: [
                 { text: "", isCorrect: false },
                 { text: "", isCorrect: false }
