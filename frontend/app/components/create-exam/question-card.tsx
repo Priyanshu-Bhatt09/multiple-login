@@ -87,7 +87,7 @@ export default function QuestionCard({ index, remove, dragHandleProps }: Questio
             {renderQuestionType(type, index)}
 
             <button type="button"
-                className="border-2 m-1 p-1 rounded-md"
+                className="border-2 mx-5 my-2 p-1 rounded-md"
                 onClick={() => remove(index)}>Delete Question</button>
         </div>
     )
