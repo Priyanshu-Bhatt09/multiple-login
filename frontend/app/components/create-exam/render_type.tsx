@@ -1,6 +1,5 @@
 import Coding from "./types/coding";
 import Input from "./types/input";
-import Match from "./types/match";
 import MCA from "./types/mca";
 import MCQ from "./types/mcq";
 import ShortText from "./types/short-text";
@@ -22,8 +21,7 @@ export function renderQuestionType(type: string, index: number) {
         case "CODING":
             return <Coding />
 
-        case "MATCH":
-            return <Match />
+        
         default:
             return null;
     }
