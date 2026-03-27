@@ -1,11 +1,16 @@
 package com.example.backend.entity;
 
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.List;
 
 
 @Entity
 @Table (name = "users")
-public class User {
+public class User implements UserDetails {
     @Id //it is a standard way to define a primary key
     @GeneratedValue (strategy = GenerationType.IDENTITY) //this tells how to generate the id this IDENTITY strategy automatically hands over it to the database which translates to an auto-increment coloumn
     private Long id;
@@ -49,11 +54,40 @@ public class User {
         this.email = email;
     }
 
+
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String getUsername() {return email;}
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of();
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }
