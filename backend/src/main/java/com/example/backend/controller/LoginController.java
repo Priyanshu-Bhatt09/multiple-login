@@ -52,4 +52,9 @@ public class LoginController {
             return ResponseEntity.badRequest().body(new MessageResponseDTO("Invalid Credentials"));
         }
     }
+
+    @GetMapping("/test") //this is only for testing
+    public String hola() {
+        return "Heloo";
+    }
 }
