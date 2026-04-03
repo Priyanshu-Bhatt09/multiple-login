@@ -18,4 +18,44 @@ public class Answer {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "question_id")
     private Question question;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setTextAnswer(String textAnswer) {
+        this.textAnswer = textAnswer;
+    }
+
+    public void setSelectedOptionId(Long selectedOptionId) {
+        this.selectedOptionId = selectedOptionId;
+    }
+
+    public void setAttempt(Attempt attempt) {
+        this.attempt = attempt;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getTextAnswer() {
+        return textAnswer;
+    }
+
+    public Long getSelectedOptionId() {
+        return selectedOptionId;
+    }
+
+    public Attempt getAttempt() {
+        return attempt;
+    }
+
+    public Question getQuestion() {
+        return question;
+    }
 }
