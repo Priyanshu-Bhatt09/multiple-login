@@ -53,8 +53,4 @@ public class LoginController {
         }
     }
 
-//    @GetMapping("/test") //this is only for testing
-//    public String hola() {
-//        return "Heloo";
-//    }
 }
