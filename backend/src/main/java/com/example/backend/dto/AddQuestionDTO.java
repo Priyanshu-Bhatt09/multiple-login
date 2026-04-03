@@ -1,34 +1,14 @@
-package com.example.backend.entity;
-
-import jakarta.persistence.*;
+package com.example.backend.dto;
 
 import java.util.List;
 
-@Entity
-public class Question {
-    @Id
-    @GeneratedValue
-    private Long id;
-
+public class AddQuestionDTO {
+    private Long examId;
     private String text;
     private String type;
-
     private int points;
     private int negativePoints;
-
-    @ManyToOne
-    private Exam exam;
-
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
-    private List<Option> options;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private List<OptionDto> options;
 
     public String getText() {
         return text;
@@ -62,19 +42,19 @@ public class Question {
         this.negativePoints = negativePoints;
     }
 
-    public Exam getExam() {
-        return exam;
+    public Long getExamId() {
+        return examId;
     }
 
-    public void setExam(Exam exam) {
-        this.exam = exam;
+    public void setExamId(Long examId) {
+        this.examId = examId;
     }
 
-    public List<Option> getOptions() {
+    public List<OptionDto> getOptions() {
         return options;
     }
 
-    public void setOptions(List<Option> options) {
+    public void setOptions(List<OptionDto> options) {
         this.options = options;
     }
 }
