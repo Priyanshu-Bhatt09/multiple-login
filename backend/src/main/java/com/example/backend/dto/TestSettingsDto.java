@@ -1,40 +1,23 @@
-package com.example.backend.entity;
+package com.example.backend.dto;
 
-import jakarta.persistence.*;
-
-import java.time.LocalDateTime;
-
-@Entity
-public class TestSettings {
-    @Id
-    @GeneratedValue
-    private Long id;
-
+public class TestSettingsDto {
+    private Long examId;
     private int duration;
     private int maxAttempts;
-
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
-
     private boolean enableTimer;
     private boolean enableProctor;
-
     private boolean tabSwitch;
     private boolean camera;
     private boolean microphone;
     private boolean fullScreen;
     private boolean multiMonitor;
-    private boolean photosRandom;
 
-    @OneToOne
-    private Exam exam;
-
-    public Long getId() {
-        return id;
+    public Long getExamId() {
+        return examId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setExamId(Long examId) {
+        this.examId = examId;
     }
 
     public int getDuration() {
@@ -51,22 +34,6 @@ public class TestSettings {
 
     public void setMaxAttempts(int maxAttempts) {
         this.maxAttempts = maxAttempts;
-    }
-
-    public LocalDateTime getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(LocalDateTime startTime) {
-        this.startTime = startTime;
-    }
-
-    public LocalDateTime getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(LocalDateTime endTime) {
-        this.endTime = endTime;
     }
 
     public boolean isEnableTimer() {
@@ -123,21 +90,5 @@ public class TestSettings {
 
     public void setMultiMonitor(boolean multiMonitor) {
         this.multiMonitor = multiMonitor;
-    }
-
-    public boolean isPhotosRandom() {
-        return photosRandom;
-    }
-
-    public void setPhotosRandom(boolean photosRandom) {
-        this.photosRandom = photosRandom;
-    }
-
-    public Exam getExam() {
-        return exam;
-    }
-
-    public void setExam(Exam exam) {
-        this.exam = exam;
     }
 }
