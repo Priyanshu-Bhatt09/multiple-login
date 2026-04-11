@@ -22,8 +22,18 @@ public class ExamController {
         return examService.createExam(dto, user);
     }
 
+    @GetMapping("/{id}")
+    public ExamResponseDTO getExamById(@PathVariable Long id) {
+        return examService.getExamById(id);
+    }
+
     @GetMapping("/link/{link}")
     public ExamResponseDTO getExamByLink(@PathVariable String link) {
         return examService.getExamByLink(link);
+    }
+
+    @GetMapping("/my-exams")
+    public java.util.List<com.example.backend.dto.DashboardExamDto> getMyExams(@AuthenticationPrincipal User user) {
+        return examService.getExamsByUser(user);
     }
 }

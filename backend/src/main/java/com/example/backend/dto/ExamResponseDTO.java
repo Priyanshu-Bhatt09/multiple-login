@@ -39,4 +39,23 @@ public class ExamResponseDTO {
     public void setQuestions(List<QuestionResponseDTO> questions) {
         this.questions = questions;
     }
+
+    private String testLink;
+    private TestSettingsDto settings;
+
+    public String getTestLink() {
+        return testLink;
+    }
+
+    public void setTestLink(String testLink) {
+        this.testLink = testLink;
+    }
+
+    public TestSettingsDto getSettings() {
+        return settings;
+    }
+
+    public void setSettings(TestSettingsDto settings) {
+        this.settings = settings;
+    }
 }
