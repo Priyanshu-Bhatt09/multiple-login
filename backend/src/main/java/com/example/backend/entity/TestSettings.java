@@ -26,6 +26,9 @@ public class TestSettings {
     private boolean multiMonitor;
     private boolean photosRandom;
 
+    @Column(columnDefinition = "varchar(255) default 'IMMEDIATELY'")
+    private String showResult = "IMMEDIATELY";
+
     @OneToOne
     private Exam exam;
 
@@ -131,6 +134,14 @@ public class TestSettings {
 
     public void setPhotosRandom(boolean photosRandom) {
         this.photosRandom = photosRandom;
+    }
+
+    public String getShowResult() {
+        return showResult != null ? showResult : "IMMEDIATELY";
+    }
+
+    public void setShowResult(String showResult) {
+        this.showResult = showResult;
     }
 
     public Exam getExam() {

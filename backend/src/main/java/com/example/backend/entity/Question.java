@@ -12,6 +12,8 @@ public class Question {
 
     private String text;
     private String type;
+    private String paragraph;  // For CODING questions instruction
+    private String correctCode;  // For CODING reference code
 
     private int points;
     private int negativePoints;
@@ -76,5 +78,21 @@ public class Question {
 
     public void setOptions(List<Option> options) {
         this.options = options;
+    }
+
+    public String getParagraph() {
+        return paragraph;
+    }
+
+    public void setParagraph(String paragraph) {
+        this.paragraph = paragraph;
+    }
+
+    public String getCorrectCode() {
+        return correctCode;
+    }
+
+    public void setCorrectCode(String correctCode) {
+        this.correctCode = correctCode;
     }
 }

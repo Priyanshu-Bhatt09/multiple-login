@@ -38,6 +38,10 @@ public class Option {
         return isCorrect;
     }
 
+    public Boolean getIsCorrect() {
+        return isCorrect;
+    }
+
     public void setCorrect(boolean correct) {
         isCorrect = correct;
     }
