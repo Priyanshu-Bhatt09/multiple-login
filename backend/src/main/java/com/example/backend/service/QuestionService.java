@@ -33,6 +33,8 @@ public class QuestionService {
         question.setType(dto.getType());
         question.setPoints(dto.getPoints());
         question.setNegativePoints(dto.getNegativePoints());
+        question.setParagraph(dto.getParagraph());
+        question.setCorrectCode(dto.getCorrectCode());
         question.setExam(exam);
 
         Question savedQuestion = questionRepository.save(question);

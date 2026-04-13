@@ -23,10 +23,11 @@ public class ResultService {
 
         for (Attempt a : attempts) {
             String studentName = a.getUser() != null ? a.getUser().getName() : null;
-//            System.out.println("User name from entity: " + studentName);
+            String studentEmail = a.getUser() != null ? a.getUser().getEmail() : null;
             results.add(new ResultResponseDto(
                     a.getId(),
                     a.getUser().getName(),
+                    studentEmail,
                     a.getScore(),
                     a.getStartTime(),
                     a.getEndTime()
