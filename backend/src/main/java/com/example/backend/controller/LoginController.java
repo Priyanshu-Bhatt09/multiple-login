@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/proctor/login")
-@CrossOrigin(origins = "http://localhost:3000/")
 public class LoginController {
     private final LoginService service;
     private final AuthenticationManager authenticationManager;

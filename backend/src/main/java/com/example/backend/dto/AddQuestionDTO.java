@@ -7,8 +7,12 @@ public class AddQuestionDTO {
     private String text;
     private String type;
     private int points;
+    @com.fasterxml.jackson.annotation.JsonProperty("negativePoint")
     private int negativePoints;
     private List<OptionDto> options;
+    private String paragraph;
+    private String correctCode;
+
 
     public String getText() {
         return text;
@@ -56,5 +60,21 @@ public class AddQuestionDTO {
 
     public void setOptions(List<OptionDto> options) {
         this.options = options;
+    }
+
+    public String getParagraph() {
+        return paragraph;
+    }
+
+    public void setParagraph(String paragraph) {
+        this.paragraph = paragraph;
+    }
+
+    public String getCorrectCode() {
+        return correctCode;
+    }
+
+    public void setCorrectCode(String correctCode) {
+        this.correctCode = correctCode;
     }
 }

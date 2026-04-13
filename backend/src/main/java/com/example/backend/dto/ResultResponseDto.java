@@ -5,14 +5,16 @@ import java.time.LocalDateTime;
 public class ResultResponseDto {
     private Long attemptId;
     private String studentName;
+    private String studentEmail;
     private int score;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
 
-    public ResultResponseDto(Long attemptId, String studentName, int score, LocalDateTime startTime, LocalDateTime endTime) {
+    public ResultResponseDto(Long attemptId, String studentName, String studentEmail, int score, LocalDateTime startTime, LocalDateTime endTime) {
         this.attemptId = attemptId;
         this.score = score;
         this.studentName = studentName;
+        this.studentEmail = studentEmail;
         this.startTime = startTime;
         this.endTime = endTime;
     }
@@ -55,5 +57,13 @@ public class ResultResponseDto {
 
     public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
+    }
+
+    public String getStudentEmail() {
+        return studentEmail;
+    }
+
+    public void setStudentEmail(String studentEmail) {
+        this.studentEmail = studentEmail;
     }
 }

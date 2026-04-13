@@ -2,6 +2,7 @@ package com.example.backend.dto;
 
 public class OptionDto {
     private String text;
+    @com.fasterxml.jackson.annotation.JsonProperty("isCorrect")
     private boolean isCorrect;
 
     public String getText() {

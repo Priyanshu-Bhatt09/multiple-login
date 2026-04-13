@@ -8,6 +8,8 @@ public class QuestionResponseDTO {
     private String type;
     private int points;
     private int negativePoints;
+    private String paragraph;  // For student code in CODING questions
+    private String correctCode;  // For reference code in CODING questions
     private List<OptionResponseDTO> options;
 
     public String getText() {
@@ -55,6 +57,22 @@ public class QuestionResponseDTO {
 
     public void setQuestionId(Long questionId) {
         this.questionId = questionId;
+    }
+
+    public String getParagraph() {
+        return paragraph;
+    }
+
+    public void setParagraph(String paragraph) {
+        this.paragraph = paragraph;
+    }
+
+    public String getCorrectCode() {
+        return correctCode;
+    }
+
+    public void setCorrectCode(String correctCode) {
+        this.correctCode = correctCode;
     }
 }
 
