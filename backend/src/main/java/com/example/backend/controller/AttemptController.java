@@ -19,9 +19,14 @@ public class AttemptController {
     }
 
     @PostMapping("/start")
-    public Attempt startAttempt(@RequestBody StartAttemptDto dto,
+    public org.springframework.http.ResponseEntity<?> startAttempt(@RequestBody StartAttemptDto dto,
                                 @AuthenticationPrincipal User user) {
-        return attemptService.startAttempt(dto, user);
+        try {
+            Attempt attempt = attemptService.startAttempt(dto, user);
+            return org.springframework.http.ResponseEntity.ok(java.util.Map.of("id", attempt.getId()));
+        } catch (RuntimeException e) {
+            return org.springframework.http.ResponseEntity.badRequest().body(java.util.Map.of("message", e.getMessage()));
+        }
     }
 
     @PostMapping("/answer")
@@ -32,5 +37,20 @@ public class AttemptController {
     @PostMapping("/submit/{attemptId}")
     public SubmitAttemptResponseDto submitAttempt(@PathVariable Long attemptId) {
         return attemptService.submitAttempt(attemptId);
+    }
+
+    @GetMapping("/my-attempts")
+    public java.util.List<com.example.backend.dto.DashboardAttemptDto> getMyAttempts(@AuthenticationPrincipal User user) {
+        return attemptService.getAttemptsByUser(user);
+    }
+
+    @PostMapping("/{attemptId}/violation")
+    public void logViolation(@PathVariable Long attemptId, @RequestBody com.example.backend.dto.ViolationDto dto) {
+        attemptService.logViolation(attemptId, dto);
+    }
+
+    @GetMapping("/{attemptId}/violations")
+    public java.util.List<com.example.backend.entity.Violation> getViolations(@PathVariable Long attemptId) {
+        return attemptService.getViolations(attemptId);
     }
 }
