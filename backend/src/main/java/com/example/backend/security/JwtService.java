@@ -12,7 +12,7 @@ import java.util.function.Function;
 
 @Service
 public class JwtService {
-    private static final Key SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    private static final String SECRET_KEY_STRING = "404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970";
 
     public String generateToken(String email) {
         return Jwts.builder()
@@ -44,6 +44,7 @@ public class JwtService {
         return claimsResolver.apply(claims);
     }
     private Key getSignInKey() {
-        return SECRET_KEY;
+        byte[] keyBytes = io.jsonwebtoken.io.Decoders.BASE64.decode(SECRET_KEY_STRING);
+        return Keys.hmacShaKeyFor(keyBytes);
     }
 }
