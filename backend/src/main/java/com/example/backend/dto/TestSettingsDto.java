@@ -11,6 +11,10 @@ public class TestSettingsDto {
     private boolean microphone;
     private boolean fullScreen;
     private boolean multiMonitor;
+    private boolean photosRandom;
+    private String showResult;
+    private String startTime;
+    private String endTime;
 
     public Long getExamId() {
         return examId;
@@ -90,5 +94,37 @@ public class TestSettingsDto {
 
     public void setMultiMonitor(boolean multiMonitor) {
         this.multiMonitor = multiMonitor;
+    }
+
+    public boolean isPhotosRandom() {
+        return photosRandom;
+    }
+
+    public void setPhotosRandom(boolean photosRandom) {
+        this.photosRandom = photosRandom;
+    }
+
+    public String getShowResult() {
+        return showResult != null ? showResult : "IMMEDIATELY";
+    }
+
+    public void setShowResult(String showResult) {
+        this.showResult = showResult;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 }
