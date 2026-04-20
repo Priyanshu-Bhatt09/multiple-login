@@ -26,7 +26,7 @@ export default function Home() {
         <header className="flex items-center justify-between gap-6 rounded-t-[34px] border-b border-white/10 bg-[#1b1a18] px-5 py-4 text-[#f3ede3] sm:px-8">
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/15 bg-white/5 text-sm font-semibold">
-              OPS
+              <img src="/test.png" width="24" height="24" />
             </div>
             <div>
               <p className="text-lg font-semibold tracking-tight">Online Proctoring System</p>
